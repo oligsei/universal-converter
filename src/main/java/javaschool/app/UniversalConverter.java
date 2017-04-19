@@ -25,7 +25,7 @@ public class UniversalConverter {
 
     private final NavigableMap<String, Converter> converters = new TreeMap<>();
     private final NavigableMap<String, Formatter> formatters = new TreeMap<>();
-    private final EnumMap formatterMap = new EnumMap<Format, Formatter>(Format.class);
+    private final EnumMap<Format, Formatter> formatterMap = new EnumMap<>(Format.class);
 
     UniversalConverter() {
         Arrays.asList(
@@ -45,10 +45,8 @@ public class UniversalConverter {
                 new ImperialFormatter()
         ).forEach((Formatter formatter) -> formatters.put(formatter.toString(), formatter));
 
-
         formatterMap.put(Format.IMPERIAL, new ImperialFormatter());
-//        formatterMap.put(Format.IMPERIAL, new ImperialFormatter());
-//        formatterMap.put(Format.IMPERIAL, new ImperialFormatter());
+        formatterMap.put(Format.METRIC, new MetricFormatter());
     }
 
     @Command
@@ -60,9 +58,12 @@ public class UniversalConverter {
             return "Target not defined";
         }
 
-        Formatter formatter = new ImperialFormatter();
-//        ImperialFormatter formatter = formatterMap.get(this.target.getFormat());
-
+        Formatter formatter;
+        if (this.format == null) {
+            formatter = this.formatterMap.get(this.target.getFormat());
+        } else {
+            formatter = this.format;
+        }
         System.out.format("Converting from %s to %s\n", this.source, this.target);
 
         return formatter.format(this.target.from(this.source.to(value)), this.target.getSuffix());
@@ -88,11 +89,13 @@ public class UniversalConverter {
         this.target = this.converters.ceilingEntry(name).getValue();
     }
 
-    public void format() {
+    @Command(abbrev = "format")
+    public void setFormat() {
         this.format = null;
     }
 
-    public void format(String name) {
+    @Command(abbrev = "format")
+    public void setFormat(String name) {
         this.format = this.formatters.ceilingEntry(name).getValue();
     }
 }
