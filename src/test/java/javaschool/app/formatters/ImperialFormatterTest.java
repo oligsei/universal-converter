@@ -13,13 +13,13 @@ public class ImperialFormatterTest {
     private final Formatter formatter = new ImperialFormatter();
 
     @Parameterized.Parameter()
-    private double value;
+    public double value;
 
     @Parameterized.Parameter(1)
-    private String suffix;
+    public String suffix;
 
     @Parameterized.Parameter(2)
-    private String expected;
+    public String expected;
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
