@@ -1,22 +1,21 @@
 package javaschool.app.converters.temperature;
 
 import javaschool.app.converters.Converter;
+import org.junit.Assert;
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertEquals;
-
-public class FahrenheitConverterTest {
+public class CelsiusConverterTest {
     private final Converter source = new CelsiusConverter();
-    private final Converter target = new FahrenheitConverter();
+    private final Converter target = new CelsiusConverter();
 
     @Test
     public void from() throws Exception {
-        assertEquals(target.from(source.to(10)), 50, 0.001);
+        Assert.assertEquals(target.from(source.to(10)), 10, 0.001);
     }
 
     @Test
     public void to() throws Exception {
-        assertEquals(source.from(target.to(50)), 10, 0.001);
+        Assert.assertEquals(source.from(target.to(10)), 10, 0.001);
     }
 
 }
