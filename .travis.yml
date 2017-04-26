@@ -2,20 +2,4 @@ language: java
 jdk:
   - oraclejdk8
 env:
-  global:
-  #  - LC_NUMERIC="lv_LV.UTF-8"
-  #  - LC_TIME="lv_LV.UTF-8"
-
-    - LANG=lv_LV
-    - LC_CTYPE="lv_LV"
-    - LC_NUMERIC="lv_LV"
-    - LC_TIME="lv_LV"
-    - LC_COLLATE="lv_LV"
-    - LC_MONETARY="lv_LV"
-    - LC_MESSAGES="lv_LV"
-    - LC_PAPER="lv_LV"
-    - LC_NAME="lv_LV"
-    - LC_ADDRESS="lv_LV"
-    - LC_TELEPHONE="lv_LV"
-    - LC_MEASUREMENT="lv_LV"
-    - LC_IDENTIFICATION="lv_LV"
+  - LANG=lv_LV LC_CTYPE="lv_LV" LC_NUMERIC="lv_LV" LC_TIME="lv_LV" LC_COLLATE="lv_LV" LC_MONETARY="lv_LV" LC_MESSAGES="lv_LV" LC_PAPER="lv_LV" LC_NAME="lv_LV" LC_ADDRESS="lv_LV" LC_TELEPHONE="lv_LV" LC_MEASUREMENT="lv_LV" LC_IDENTIFICATION="lv_LV"
