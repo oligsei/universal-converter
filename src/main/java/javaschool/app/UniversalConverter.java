@@ -54,6 +54,10 @@ public class UniversalConverter {
             return "Target not defined";
         }
 
+        if (this.source.getType() != this.target.getType()) {
+            return String.format("Type mismatch. Unable to convert from %s to %s", this.source, this.target);
+        }
+
         Formatter formatter;
         if (this.format == null) {
             formatter = this.formatterMap.get(this.target.getFormat());

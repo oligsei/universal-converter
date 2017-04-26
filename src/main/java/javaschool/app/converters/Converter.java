@@ -3,7 +3,7 @@ package javaschool.app.converters;
 import javaschool.app.formatters.Format;
 
 public abstract class Converter {
-    protected enum Category {
+    protected enum Type {
         TEMPERATURE,
         LENGTH
     }
@@ -16,7 +16,7 @@ public abstract class Converter {
         return value;
     }
 
-    public abstract Category getCategory();
+    public abstract Type getType();
 
     public abstract String getSuffix();
 
