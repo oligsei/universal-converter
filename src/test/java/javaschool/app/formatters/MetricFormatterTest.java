@@ -24,9 +24,9 @@ public class MetricFormatterTest {
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {10.5, "s", "10,50 s"},
-                {10.25, "s", "10,25 s"},
-                {10.125, "s", "10,13 s"},
+                {10.5, "s", String.format("%.2f s", 10.5)},
+                {10.25, "s", String.format("%.2f s", 10.25)},
+                {10.125, "s", String.format("%.2f s", 10.125)},
         });
     }
 
