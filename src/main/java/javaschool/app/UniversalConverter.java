@@ -19,13 +19,13 @@ import java.util.*;
 
 public class UniversalConverter {
 
-    private Converter source;
-    private Converter target;
-    private Formatter format;
-
     private final NavigableMap<String, Converter> converters = new TreeMap<>();
     private final NavigableMap<String, Formatter> formatters = new TreeMap<>();
     private final EnumMap<Format, Formatter> formatterMap = new EnumMap<>(Format.class);
+
+    private Converter target;
+    private Converter source;
+    private Formatter format;
 
     UniversalConverter() {
         Arrays.asList(
@@ -81,12 +81,22 @@ public class UniversalConverter {
 
     @Command(abbrev = "source")
     public void setSource(String name) {
-        this.source = this.converters.ceilingEntry(name).getValue();
+        final Converter converter = this.converters.ceilingEntry(name).getValue();
+        if (converter == null) {
+            throw new IllegalArgumentException(String.format("Did not find any converters matching %s", name));
+        } else {
+            this.source = converter;
+        }
     }
 
     @Command(abbrev = "target")
     public void setTarget(String name) {
-        this.target = this.converters.ceilingEntry(name).getValue();
+        final Converter converter = this.converters.ceilingEntry(name).getValue();
+        if (converter == null) {
+            throw new IllegalArgumentException(String.format("Did not find any converters matching %s", name));
+        } else {
+            this.target = converter;
+        }
     }
 
     @Command(abbrev = "format")
@@ -96,6 +106,11 @@ public class UniversalConverter {
 
     @Command(abbrev = "format")
     public void setFormat(String name) {
-        this.format = this.formatters.ceilingEntry(name).getValue();
+        final Formatter formatter = this.formatters.ceilingEntry(name).getValue();
+        if (formatter == null) {
+            throw new IllegalArgumentException(String.format("Did not find any formatters matching %s", name));
+        } else {
+            this.format = formatter;
+        }
     }
 }
