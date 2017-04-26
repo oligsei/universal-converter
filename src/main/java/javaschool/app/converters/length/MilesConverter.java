@@ -10,7 +10,7 @@ public class MilesConverter extends LengthConverter {
 
     @Override
     public double to(double value) {
-        return value / 1000 * 1.609344;
+        return value * 1000 * 1.609344;
     }
 
     @Override
