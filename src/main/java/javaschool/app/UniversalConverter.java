@@ -100,7 +100,7 @@ public class UniversalConverter {
     }
 
     @Command(abbrev = "format")
-    public void setFormat() {
+    public void clearFormat() {
         this.format = null;
     }
 
