@@ -11,12 +11,12 @@ public class FahrenheitConverterTest {
 
     @Test
     public void from() throws Exception {
-        assertEquals(target.from(source.to(10)), 50, 0.001);
+        assertEquals(50, target.from(source.to(10)), 0.001);
     }
 
     @Test
     public void to() throws Exception {
-        assertEquals(source.from(target.to(50)), 10, 0.001);
+        assertEquals(10, source.from(target.to(50)), 0.001);
     }
 
 }

@@ -32,7 +32,7 @@ public class ImperialFormatterTest {
 
     @Test
     public void format() throws Exception {
-        Assert.assertEquals(formatter.format(value, suffix), expected);
+        Assert.assertEquals(expected, formatter.format(value, suffix));
     }
 
 }

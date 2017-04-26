@@ -8,7 +8,7 @@ public class MetricFormatterTest {
 
     @Test
     public void format() throws Exception {
-        Assert.assertEquals(formatter.format(10.123, "s"), "10,12 s");
+        Assert.assertEquals("10,12 s", formatter.format(10.123, "s"));
     }
 
 }

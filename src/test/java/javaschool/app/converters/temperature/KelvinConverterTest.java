@@ -10,12 +10,12 @@ public class KelvinConverterTest {
 
     @Test
     public void from() throws Exception {
-        Assert.assertEquals(target.from(source.to(10)), 283.15, 0.001);
+        Assert.assertEquals(283.15, target.from(source.to(10)), 0.001);
     }
 
     @Test
     public void to() throws Exception {
-        Assert.assertEquals(source.from(target.to(283.15)), 10, 0.001);
+        Assert.assertEquals(10, source.from(target.to(283.15)), 0.001);
     }
 
 }
