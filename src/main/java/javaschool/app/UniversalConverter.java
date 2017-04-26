@@ -40,13 +40,9 @@ public class UniversalConverter {
                 new MilesConverter()
         ).forEach((Converter converter) -> converters.put(converter.toString(), converter));
 
-        Arrays.asList(
-                new MetricFormatter(),
-                new ImperialFormatter()
-        ).forEach((Formatter formatter) -> formatters.put(formatter.toString(), formatter));
-
         formatterMap.put(Format.IMPERIAL, new ImperialFormatter());
         formatterMap.put(Format.METRIC, new MetricFormatter());
+        formatterMap.forEach((format, formatter) -> formatters.put(formatter.toString(), formatter));
     }
 
     @Command
