@@ -1,5 +1,7 @@
 package javaschool.app.converters.temperature;
 
+import javaschool.app.converters.Unit;
+
 public class KelvinConverter extends TemperatureConverter {
     @Override
     public double from(double value) {
@@ -14,6 +16,11 @@ public class KelvinConverter extends TemperatureConverter {
     @Override
     public String getSuffix() {
         return "K";
+    }
+
+    @Override
+    public Unit getUnit() {
+        return Unit.KELVIN;
     }
 
     @Override

@@ -18,6 +18,8 @@ public abstract class Converter {
 
     public abstract Type getType();
 
+    public abstract Unit getUnit();
+
     public abstract String getSuffix();
 
     public Format getFormat() {

@@ -1,5 +1,6 @@
 package javaschool.app.converters.length;
 
+import javaschool.app.converters.Unit;
 import javaschool.app.formatters.Format;
 
 public class MilesConverter extends LengthConverter {
@@ -21,6 +22,11 @@ public class MilesConverter extends LengthConverter {
     @Override
     public Format getFormat() {
         return Format.IMPERIAL;
+    }
+
+    @Override
+    public Unit getUnit() {
+        return Unit.MILES;
     }
 
     @Override

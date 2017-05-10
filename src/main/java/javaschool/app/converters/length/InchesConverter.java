@@ -1,5 +1,6 @@
 package javaschool.app.converters.length;
 
+import javaschool.app.converters.Unit;
 import javaschool.app.formatters.Format;
 
 public class InchesConverter extends LengthConverter {
@@ -22,6 +23,11 @@ public class InchesConverter extends LengthConverter {
     @Override
     public Format getFormat() {
         return Format.IMPERIAL;
+    }
+
+    @Override
+    public Unit getUnit() {
+        return Unit.INCHES;
     }
 
     @Override

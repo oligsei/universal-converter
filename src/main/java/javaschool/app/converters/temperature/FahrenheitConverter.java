@@ -1,5 +1,7 @@
 package javaschool.app.converters.temperature;
 
+import javaschool.app.converters.Unit;
+
 public class FahrenheitConverter extends TemperatureConverter {
     @Override
     public double from(double value) {
@@ -14,6 +16,11 @@ public class FahrenheitConverter extends TemperatureConverter {
     @Override
     public String getSuffix() {
         return "°F";
+    }
+
+    @Override
+    public Unit getUnit() {
+        return Unit.FAHRENHEIT;
     }
 
     @Override
