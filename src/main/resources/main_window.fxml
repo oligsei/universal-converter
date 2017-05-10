@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.GridPane?>
-<GridPane fx:controller="javaschool.app.GUI"
+<?import javafx.scene.control.Label?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+
+<?import javafx.geometry.Insets?>
+<GridPane fx:controller="javaschool.app.ConverterController"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10"
           styleClass="root">
+    <padding>
+        <Insets top="10" left="10" right="10" bottom="10" />
+    </padding>
+    <Label GridPane.columnIndex="0" GridPane.rowIndex="0" prefWidth="100" text="source unit"/>
+    <Label GridPane.columnIndex="3" GridPane.rowIndex="0" prefWidth="100" text="target unit"/>
+    <Label GridPane.columnIndex="0" GridPane.rowIndex="1" prefWidth="100" text="source value"/>
+    <Label GridPane.columnIndex="3" GridPane.rowIndex="1" prefWidth="100" text="target value"/>
+
+    <ComboBox fx:id="source" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="200" maxWidth="200"/>
+    <ComboBox fx:id="target" GridPane.columnIndex="4" GridPane.rowIndex="0" prefWidth="200" maxWidth="200"/>
+
+    <TextField fx:id="sourceValue" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="200" maxWidth="200" />
+    <TextField fx:id="targetValue" text="0" GridPane.columnIndex="4" GridPane.rowIndex="1" prefWidth="200" maxWidth="200" editable="false"/>
+
+    <Button GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.rowSpan="2" text="flip"/>
+    <Button GridPane.halignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="5"
+            prefWidth="200" defaultButton="true" text="Convert"/>
 </GridPane>

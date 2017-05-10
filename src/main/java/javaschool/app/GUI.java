@@ -11,10 +11,11 @@ public class GUI extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        Scene scene = new Scene(FXMLLoader.load(Main.class.getResource("/main_window.fxml")), 300, 275);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Universal converter");
-        primaryStage.show();
+    public void start(Stage stage) throws Exception {
+        final Scene scene = new Scene(FXMLLoader.load(Main.class.getResource("/main_window.fxml")));
+        stage.setScene(scene);
+        stage.setTitle("Universal converter");
+        stage.show();
     }
+
 }

@@ -1,6 +1,5 @@
 package javaschool.app;
 
-import asg.cliche.Command;
 import javaschool.app.converters.Converter;
 import javaschool.app.converters.length.FeetConverter;
 import javaschool.app.converters.length.InchesConverter;
@@ -45,72 +44,61 @@ public class UniversalConverter {
         formatterMap.forEach((format, formatter) -> formatters.put(formatter.toString(), formatter));
     }
 
-    @Command
-    public String convert(double value) {
+    public double convert(double value) throws Exception {
         if (this.source == null) {
-            return "Source not defined";
+            throw new Exception("Source not defined");
         }
         if (this.target == null) {
-            return "Target not defined";
+            throw new Exception("Target not defined");
         }
 
         if (this.source.getType() != this.target.getType()) {
-            return String.format("Type mismatch. Unable to convert from %s to %s", this.source, this.target);
+            throw new Exception(String.format("Type mismatch. Unable to convert from %s to %s", this.source, this.target));
         }
 
-        Formatter formatter;
+        return this.target.from(this.source.to(value));
+    }
+
+    public String format(double value) {
+        return getFormatter().format(value, this.target.getSuffix());
+    }
+
+    public Formatter getFormatter() {
         if (this.format == null) {
-            formatter = this.formatterMap.get(this.target.getFormat());
-        } else {
-            formatter = this.format;
+            return this.formatterMap.get(target.getFormat());
         }
-        System.out.format("Converting from %s to %s\n", this.source, this.target);
-
-        return formatter.format(this.target.from(this.source.to(value)), this.target.getSuffix());
+        return this.format;
     }
 
-    @Command
-    public Collection<Converter> converters() {
-        return this.converters.values();
+    public NavigableMap<String, Converter> getConverters() {
+        return this.converters;
     }
 
-    @Command
-    public Collection<Formatter> formatters() {
-        return this.formatters.values();
+    public NavigableMap<String, Formatter> getFormatters() {
+        return this.formatters;
     }
 
-    @Command(abbrev = "source")
-    public void setSource(String name) {
-        final Converter converter = this.converters.ceilingEntry(name).getValue();
-        if (converter == null) {
-            throw new IllegalArgumentException(String.format("Did not find any converters matching %s", name));
-        } else {
-            this.source = converter;
-        }
+    public void setSource(Converter converter) {
+        this.source = converter;
     }
 
-    @Command(abbrev = "target")
-    public void setTarget(String name) {
-        final Converter converter = this.converters.ceilingEntry(name).getValue();
-        if (converter == null) {
-            throw new IllegalArgumentException(String.format("Did not find any converters matching %s", name));
-        } else {
-            this.target = converter;
-        }
+    public Converter getSource() {
+        return source;
     }
 
-    @Command(abbrev = "format")
+    public void setTarget(Converter converter) {
+        this.target = converter;
+    }
+
+    public Converter getTarget() {
+        return target;
+    }
+
     public void clearFormat() {
         this.format = null;
     }
 
-    @Command(abbrev = "format")
-    public void setFormat(String name) {
-        final Formatter formatter = this.formatters.ceilingEntry(name).getValue();
-        if (formatter == null) {
-            throw new IllegalArgumentException(String.format("Did not find any formatters matching %s", name));
-        } else {
-            this.format = formatter;
-        }
+    public void setFormat(Formatter formatter) {
+        this.format = formatter;
     }
 }
